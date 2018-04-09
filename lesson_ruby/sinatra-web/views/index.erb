@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>タイトル</title>
+  </head>
+  <body>
+    <form action="/" method="POST">
+      <div><label>なまえ：<input type="text" name="target_name"></label></div>
+      <div><label>年齢：<input type="text" name="target_age"></label></div>
+      <div><input type="submit" value="送信"></div>
+    </form>
+    
+    <% name = params['target_name'] %>
+    <% age = params['target_age'] %>
+    
+    <% time_jpn = Time.now.getlocal("+09:00") %>
+    <p>今は<%= time_jpn.hour %>時です。</p>
+    
+    <% if 6 <= time_jpn.hour && time_jpn.hour < 12 %>
+      <% aisatsu = "おはよう" %>
+    <% elsif 12 <= time_jpn.hour && time_jpn.hour < 18 %>
+      <% aisatsu = "こんにちは" %>
+    <% else %>
+      <% aisatsu = "こんばんは" %>
+    <% end %>  
+    
+    <p><%= aisatsu %>、<%= name %>さん(<%= age %>歳)</p>
+
+  </body>
+</html>
