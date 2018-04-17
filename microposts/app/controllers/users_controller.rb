@@ -65,6 +65,12 @@ class UsersController < ApplicationController
     counts(@user)
   end
 
+  def favorites
+    
+    @user = current_user
+    @favorites = @user.hogehoges.page(params[:page])
+    counts(@user)
+  end
   
   private
   
