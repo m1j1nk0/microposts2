@@ -3,6 +3,8 @@ class ToppagesController < ApplicationController
     if logged_in?
       @user = current_user
       @micropost = current_user.microposts.build
+      
+      #binding.pry
       @microposts = current_user.microposts.order("created_at DESC").page(params[:page])
     end
   end
